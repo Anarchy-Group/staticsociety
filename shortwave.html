@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Static Society - Shortwave</title>
+  <meta name="description" content="Learn about shortwave radio, how to get started, shortwave bands, famous frequencies, and the history of shortwave on Static Society." />
+  <style>
+    :root {
+      --bg: #081018;
+      --bg2: #0d1822;
+      --panel: #132231;
+      --panel2: #172a3d;
+      --line: #2d4b64;
+      --text: #e6f4ff;
+      --soft: #b9cfdf;
+      --accent: #86d7ff;
+      --accent2: #64f0c8;
+      --warning: #ffd27a;
+      --shadow: rgba(0,0,0,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(134,215,255,0.08), transparent 35%),
+        linear-gradient(180deg, #09111a 0%, #081018 30%, #0c1620 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+      opacity: 0.10;
+      z-index: 999;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #050b11;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+      color: var(--soft);
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(9, 17, 26, 0.88);
+      border-bottom: 1px solid rgba(134, 215, 255, 0.12);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #193248, #0f1d2a);
+      border: 1px solid var(--line);
+      font-size: 1.4rem;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      font-size: 0.96rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero {
+      padding: 62px 0 30px;
+    }
+
+    .hero-card,
+    .panel,
+    .feature-card,
+    .band-card,
+    .tip-card,
+    .footer-card,
+    .table-wrap,
+    .callout,
+    .history-card,
+    .start-card,
+    .freq-special-card,
+    .modal-card {
+      background: linear-gradient(180deg, rgba(20,34,49,0.96), rgba(16,27,39,0.96));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 50px var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "SHORTWAVE • HISTORY • BANDS • STATIONS • DX";
+      position: absolute;
+      right: -65px;
+      top: 18px;
+      transform: rotate(14deg);
+      font-size: 0.78rem;
+      color: rgba(230,244,255,0.22);
+      letter-spacing: 2px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 14px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(100,240,200,0.12);
+      border: 1px solid rgba(100,240,200,0.28);
+      color: #b7ffec;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+    }
+
+    .hero h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+    }
+
+    .hero p {
+      color: var(--soft);
+      max-width: 880px;
+      font-size: 1.04rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: linear-gradient(180deg, #1a3043, #122131);
+      transition: 0.2s ease;
+      font-weight: bold;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #2c5a78, #1e4158);
+      border-color: #568db2;
+    }
+
+    .btn.ghost {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      margin: 0 0 22px;
+      color: var(--soft);
+      max-width: 920px;
+    }
+
+    .quick-nav {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .quick-nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 16px 12px;
+      text-align: center;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      transition: 0.2s ease;
+      font-weight: bold;
+    }
+
+    .quick-nav a:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .panel,
+    .feature-card,
+    .band-card,
+    .tip-card,
+    .history-card,
+    .start-card,
+    .freq-special-card,
+    .footer-card {
+      padding: 24px;
+    }
+
+    .feature-card h3,
+    .band-card h3,
+    .tip-card h3,
+    .history-card h3,
+    .start-card h3,
+    .freq-special-card h3,
+    .footer-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .feature-card p,
+    .band-card p,
+    .tip-card p,
+    .history-card p,
+    .start-card p,
+    .freq-special-card p,
+    .footer-card p,
+    .panel p {
+      color: var(--soft);
+    }
+
+    .list,
+    .band-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--soft);
+    }
+
+    .list li,
+    .band-list li {
+      margin-bottom: 8px;
+    }
+
+    .mini-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      color: #bff8ea;
+      border: 1px solid rgba(100,240,200,0.2);
+      background: rgba(100,240,200,0.08);
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .callout {
+      padding: 22px;
+      margin-top: 18px;
+      background:
+        radial-gradient(circle at top, rgba(100,240,200,0.08), transparent 45%),
+        linear-gradient(180deg, #162b3d, #132231);
+    }
+
+    .callout h3 {
+      margin-top: 0;
+      color: var(--warning);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      padding: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    td {
+      color: var(--soft);
+    }
+
+    .mono {
+      font-family: "Courier New", monospace;
+      color: #d9f6ff;
+      font-weight: bold;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 18px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--soft);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .site-note {
+      margin-top: 22px;
+      text-align: center;
+      color: #97adbe;
+      font-size: 0.92rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .timeline-item {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: var(--warning);
+      margin-bottom: 6px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(760px, 100%);
+      padding: 26px;
+      position: relative;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .modal-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.8rem;
+    }
+
+    .modal-card p,
+    .modal-card li {
+      color: var(--soft);
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 1050px) {
+      .quick-nav,
+      .three-col,
+      .two-col,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .quick-nav,
+      .three-col,
+      .two-col,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-card,
+      .panel,
+      .feature-card,
+      .band-card,
+      .tip-card,
+      .footer-card,
+      .table-wrap,
+      .callout,
+      .history-card,
+      .start-card,
+      .freq-special-card,
+      .modal-card {
+        border-radius: 18px;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .hero-card::after {
+        display: none;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav a {
+        padding: 9px 12px;
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>📻 Static Society • Shortwave listening, bands, history, and famous frequencies</div>
+      <div>Featured page: Shortwave</div>
+    </div>
+  </div>
+
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-badge">📡</div>
+        <div class="brand-text">
+          <h1>STATIC SOCIETY</h1>
+          <p>Signals, stations, propagation, modes, and guides</p>
+        </div>
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="shortwave.html" class="active">Shortwave</a>
+        <a href="longwave.html">Longwave</a>
+        <a href="am.html">AM</a>
+        <a href="fm.html">FM</a>
+        <a href="amateur.html">Amateur</a>
+        <a href="modes.html">Modes</a>
+        <a href="guides.html">Guides</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <span class="eyebrow">SHORTWAVE RADIO</span>
+          <h2>Signals from far beyond your local dial.</h2>
+          <p>
+            Shortwave radio is one of the most fascinating parts of the radio world. Unlike local AM and FM,
+            shortwave can travel huge distances by interacting with the ionosphere, which means a listener with
+            the right setup can hear stations, time signals, utility transmissions, and unusual broadcasts from
+            far away.
+          </p>
+          <div class="button-row">
+            <a href="#what-is-shortwave" class="btn primary">What Is Shortwave?</a>
+            <a href="#getting-started" class="btn">How to Get Into It</a>
+            <a href="#shortwave-bands" class="btn">Bands & Frequencies</a>
+            <a href="#history" class="btn ghost">History of Shortwave</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Quick navigation</h2>
+        <p class="section-subtitle">Jump straight to the part you want to explore.</p>
+        <div class="quick-nav">
+          <a href="#what-is-shortwave">Intro</a>
+          <a href="#getting-started">Getting Started</a>
+          <a href="#why-shortwave">Why It’s Cool</a>
+          <a href="#shortwave-bands">Bands</a>
+          <a href="#special-frequencies">Special Frequencies</a>
+          <a href="#history">History</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="what-is-shortwave">
+      <div class="container two-col">
+        <div class="panel">
+          <h2 class="section-title">What is shortwave?</h2>
+          <p>
+            Shortwave generally refers to radio in the high-frequency range that can support long-distance reception.
+            The fun part is propagation: signals can bend or reflect via the ionosphere and reach listeners hundreds
+            or even thousands of miles away.
+          </p>
+          <ul class="list">
+            <li>Good for long-distance listening</li>
+            <li>Used by broadcasters, time stations, utilities, and hobbyists</li>
+            <li>Changes a lot with time of day, season, and solar conditions</li>
+            <li>Can sound alive, unpredictable, and a little magical</li>
+          </ul>
+        </div>
+
+        <div class="panel" id="why-shortwave">
+          <h2 class="section-title">Why people love shortwave</h2>
+          <p>
+            Shortwave is not just about hearing audio. It is about the experience of tuning, catching distant
+            signals, learning how propagation works, and discovering stations that feel hidden compared with
+            ordinary local radio.
+          </p>
+          <ul class="list">
+            <li>International stations and cross-border listening</li>
+            <li>Famous time and frequency signals</li>
+            <li>Mystery and utility transmissions</li>
+            <li>DXing, signal hunting, and propagation geekery</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="getting-started">
+      <div class="container">
+        <h2 class="section-title">How to get into shortwave</h2>
+        <p class="section-subtitle">
+          You do not need a giant shack to start. A simple setup and curiosity go a long way.
+        </p>
+
+        <div class="three-col">
+          <article class="start-card">
+            <span class="mini-tag">STEP 1</span>
+            <h3>Get a receiver</h3>
+            <p>
+              Start with a radio that covers shortwave properly. A receiver with AM and, ideally, SSB
+              support is much more useful than a basic local-only radio.
+            </p>
+          </article>
+
+          <article class="start-card">
+            <span class="mini-tag">STEP 2</span>
+            <h3>Use a better antenna</h3>
+            <p>
+              Even a simple wire antenna can make a huge difference. Shortwave listening often improves a lot
+              when you get away from noisy electronics and give the radio more signal to work with.
+            </p>
+          </article>
+
+          <article class="start-card">
+            <span class="mini-tag">STEP 3</span>
+            <h3>Learn when to listen</h3>
+            <p>
+              Lower shortwave bands often come alive more at night, while higher bands often perform better
+              during the day. The best results come from experimenting.
+            </p>
+          </article>
+
+          <article class="start-card">
+            <span class="mini-tag">STEP 4</span>
+            <h3>Scan the broadcast bands</h3>
+            <p>
+              Instead of spinning randomly, begin with the well-known shortwave broadcast bands. That gives you
+              a much better chance of hearing real activity fast.
+            </p>
+          </article>
+
+          <article class="start-card">
+            <span class="mini-tag">STEP 5</span>
+            <h3>Keep notes</h3>
+            <p>
+              Write down the date, time, frequency, and what you heard. This makes listening more fun and helps
+              you learn which bands work best for you.
+            </p>
+          </article>
+
+          <article class="start-card">
+            <span class="mini-tag">STEP 6</span>
+            <h3>Try famous signals</h3>
+            <p>
+              Start with stations and frequencies that are widely known, like time signals or legendary oddities.
+              These make excellent reference points while you learn.
+            </p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <h3>Beginner tip</h3>
+          <p>
+            If you are brand new, the easiest thing to do is start with the 49m, 41m, 31m, 25m, and 19m bands,
+            then check how they change between day and night.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shortwave-bands">
+      <div class="container">
+        <h2 class="section-title">Shortwave broadcast bands</h2>
+        <p class="section-subtitle">
+          These are the classic tuning windows used for shortwave broadcasting and general listening.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Band</th>
+                <th>Frequency Range</th>
+                <th>General Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>120m</td>
+                <td class="mono">2300–2500 kHz</td>
+                <td>Lower-frequency tropical and specialist listening area</td>
+              </tr>
+              <tr>
+                <td>90m</td>
+                <td class="mono">3200–3400 kHz</td>
+                <td>Night listening and lower-band activity</td>
+              </tr>
+              <tr>
+                <td>75m</td>
+                <td class="mono">3900–4050 kHz</td>
+                <td>Lower shortwave range, often better later in the day or at night</td>
+              </tr>
+              <tr>
+                <td>60m</td>
+                <td class="mono">4700–5100 kHz</td>
+                <td>Useful lower shortwave area</td>
+              </tr>
+              <tr>
+                <td>49m</td>
+                <td class="mono">5800–6300 kHz</td>
+                <td>One of the best-known shortwave broadcast ranges</td>
+              </tr>
+              <tr>
+                <td>41m</td>
+                <td class="mono">7200–7600 kHz</td>
+                <td>Popular and often lively</td>
+              </tr>
+              <tr>
+                <td>31m</td>
+                <td class="mono">9300–9995 kHz</td>
+                <td>Classic all-round shortwave listening band</td>
+              </tr>
+              <tr>
+                <td>25m</td>
+                <td class="mono">11500–12200 kHz</td>
+                <td>Strong daytime listening zone</td>
+              </tr>
+              <tr>
+                <td>22m</td>
+                <td class="mono">13500–13900 kHz</td>
+                <td>Higher daytime shortwave area</td>
+              </tr>
+              <tr>
+                <td>19m</td>
+                <td class="mono">15000–15900 kHz</td>
+                <td>Popular daytime band with wide reach</td>
+              </tr>
+              <tr>
+                <td>16m</td>
+                <td class="mono">17400–17995 kHz</td>
+                <td>Higher-frequency daytime tuning</td>
+              </tr>
+              <tr>
+                <td>15m</td>
+                <td class="mono">18800–19100 kHz</td>
+                <td>Higher shortwave range</td>
+              </tr>
+              <tr>
+                <td>13m</td>
+                <td class="mono">21450–21995 kHz</td>
+                <td>Upper shortwave broadcast band</td>
+              </tr>
+              <tr>
+                <td>11m</td>
+                <td class="mono">25500–26200 kHz</td>
+                <td>Highest of the traditional shortwave broadcast bands</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <h3>Simple way to remember it</h3>
+          <p>
+            Lower bands are often nicer at night. Higher bands often open better by day. The exact results depend
+            on propagation, location, and conditions, which is part of what makes shortwave so addictive.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container three-col">
+        <article class="band-card">
+          <span class="mini-tag">BEST FOR NIGHT</span>
+          <h3>Lower bands</h3>
+          <ul class="band-list">
+            <li class="mono">3200–3400 kHz</li>
+            <li class="mono">3900–4050 kHz</li>
+            <li class="mono">4700–5100 kHz</li>
+            <li class="mono">5800–6300 kHz</li>
+          </ul>
+        </article>
+
+        <article class="band-card">
+          <span class="mini-tag">BEST ALL-ROUNDER</span>
+          <h3>Core listening bands</h3>
+          <ul class="band-list">
+            <li class="mono">7200–7600 kHz</li>
+            <li class="mono">9300–9995 kHz</li>
+            <li class="mono">11500–12200 kHz</li>
+          </ul>
+        </article>
+
+        <article class="band-card">
+          <span class="mini-tag">BEST FOR DAY</span>
+          <h3>Higher bands</h3>
+          <ul class="band-list">
+            <li class="mono">13500–13900 kHz</li>
+            <li class="mono">15000–15900 kHz</li>
+            <li class="mono">17400–17995 kHz</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="special-frequencies">
+      <div class="container">
+        <h2 class="section-title">Special frequencies with stories behind them</h2>
+        <p class="section-subtitle">
+          These are not just random frequencies. They are famous, historic, mysterious, or especially useful.
+          Click the buttons for more information.
+        </p>
+
+        <div class="three-col">
+          <article class="freq-special-card">
+            <span class="mini-tag">MYSTERY SIGNAL</span>
+            <h3>4625 kHz</h3>
+            <p>
+              Famous for the Russian station commonly called UVB-76 or “The Buzzer.”
+            </p>
+            <button class="btn" data-modal="uvb76">More Info</button>
+          </article>
+
+          <article class="freq-special-card">
+            <span class="mini-tag">TIME SIGNAL</span>
+            <h3>5000 kHz / 10000 kHz / 15000 kHz</h3>
+            <p>
+              Iconic WWV frequencies used as shortwave time and frequency references.
+            </p>
+            <button class="btn" data-modal="wwv">More Info</button>
+          </article>
+
+          <article class="freq-special-card">
+            <span class="mini-tag">CANADIAN TIME STATION</span>
+            <h3>3330 kHz / 7850 kHz / 14670 kHz</h3>
+            <p>
+              CHU is a famous Canadian official time signal station.
+            </p>
+            <button class="btn" data-modal="chu">More Info</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="history">
+      <div class="container">
+        <h2 class="section-title">History of shortwave</h2>
+        <p class="section-subtitle">
+          Shortwave became important when experimenters discovered that higher frequencies could be used for
+          long-distance communication by interacting with the ionosphere.
+        </p>
+
+        <div class="two-col">
+          <article class="history-card">
+            <h3>How it began</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Early 1920s</strong>
+                Experimenters began proving that shorter wavelengths could travel long distances by bouncing from
+                charged layers in the upper atmosphere.
+              </div>
+              <div class="timeline-item">
+                <strong>Late 1930s</strong>
+                These experiments helped establish worldwide shortwave communication and international broadcasting.
+              </div>
+              <div class="timeline-item">
+                <strong>Broadcast era</strong>
+                Governments, international broadcasters, and monitoring services used shortwave to reach listeners
+                far beyond national borders.
+              </div>
+            </div>
+          </article>
+
+          <article class="history-card">
+            <h3>Why it mattered</h3>
+            <p>
+              Shortwave was a big deal because it made global communication practical in a way that felt almost
+              unreal at the time. It could cross continents, connect remote regions, support international news,
+              and create a direct radio link between places that local broadcasting simply could not reach.
+            </p>
+            <p>
+              Even now, shortwave remains loved by hobbyists because it combines engineering, geography,
+              atmosphere, history, and pure chance in one listening experience.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container three-col">
+        <article class="tip-card">
+          <h3>Best first target</h3>
+          <p>
+            Start with a famous time station or a busy broadcast band. That gives you something concrete to hunt
+            for instead of feeling lost.
+          </p>
+        </article>
+
+        <article class="tip-card">
+          <h3>Best habit</h3>
+          <p>
+            Log what you hear. Date, time, frequency, and signal quality notes will teach you more than random
+            tuning alone.
+          </p>
+        </article>
+
+        <article class="tip-card">
+          <h3>Best mindset</h3>
+          <p>
+            Experiment. Shortwave rewards patience. Some days a band is quiet, and another day it suddenly opens
+            and feels full of life.
+          </p>
+        </article>
+      </div>
+
+      <div class="container">
+        <div class="callout">
+          <h3>Shortwave page mission</h3>
+          <p>
+            This page should make visitors think: “I want to try this tonight.” It should feel welcoming for beginners,
+            but still rich enough that enthusiasts enjoy browsing it too.
+          </p>
+          <div class="button-row">
+            <a href="modes.html" class="btn">Open Modes</a>
+            <a href="guides.html" class="btn">Open Guides</a>
+            <a href="glossary.html" class="btn">Open Glossary</a>
+            <a href="index.html" class="btn primary">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-card">
+        <h3>Static Society</h3>
+        <p>
+          A radio enthusiast site focused on signals, bands, propagation, listening, and the weirdly beautiful
+          world of radio.
+        </p>
+        <a href="about.html" class="btn">About Static Society</a>
+      </div>
+
+      <div class="footer-card">
+        <h3>Site Pages</h3>
+        <div class="footer-links">
+          <a href="shortwave.html">Shortwave</a>
+          <a href="longwave.html">Longwave</a>
+          <a href="am.html">AM</a>
+          <a href="fm.html">FM</a>
+          <a href="amateur.html">Amateur Radio</a>
+          <a href="modes.html">Modes</a>
+        </div>
+      </div>
+
+      <div class="footer-card">
+        <h3>More</h3>
+        <div class="footer-links">
+          <a href="guides.html">Guides</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="links.html">Links</a>
+          <a href="index.html">Back to Top</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="site-note">Static Society • Shortwave listening, band hunting, and signal history 📻</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <button class="close-btn" id="closeModal">Close</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const modalData = {
+      uvb76: {
+        title: "4625 kHz — UVB-76 / “The Buzzer”",
+        content: `
+          <p>
+            4625 kHz is famous because of the Russian station commonly nicknamed <strong>UVB-76</strong>,
+            often called <strong>“The Buzzer.”</strong> It is known for a repeating buzzing sound and occasional
+            Russian voice messages.
+          </p>
+          <ul class="list">
+            <li>One of the best-known mysterious shortwave signals</li>
+            <li>Associated with military communication theories</li>
+            <li>Famous among radio listeners for its eerie continuous tone</li>
+            <li>A great example of why shortwave has such a mythic reputation</li>
+          </ul>
+          <p>
+            Even if you never decode anything, just hearing it can feel like you’ve tuned into radio folklore.
+          </p>
+        `
+      },
+      wwv: {
+        title: "WWV — Famous U.S. Time Signal Frequencies",
+        content: `
+          <p>
+            <strong>WWV</strong> is a famous U.S. shortwave time and frequency station. It is widely used as a
+            reference signal and is one of the most iconic things a shortwave listener can hear.
+          </p>
+          <ul class="list">
+            <li><span class="mono">2500 kHz</span></li>
+            <li><span class="mono">5000 kHz</span></li>
+            <li><span class="mono">10000 kHz</span></li>
+            <li><span class="mono">15000 kHz</span></li>
+            <li><span class="mono">20000 kHz</span></li>
+          </ul>
+          <p>
+            WWV is amazing for beginners because it gives you a stable target and helps you judge how well the band
+            is propagating at that moment.
+          </p>
+        `
+      },
+      chu: {
+        title: "CHU — Canadian Official Time Station",
+        content: `
+          <p>
+            <strong>CHU</strong> is Canada’s official shortwave time station and another great target for listeners.
+            It is historically interesting and also really useful as a real-world propagation check.
+          </p>
+          <ul class="list">
+            <li><span class="mono">3330 kHz</span></li>
+            <li><span class="mono">7850 kHz</span></li>
+            <li><span class="mono">14670 kHz</span></li>
+          </ul>
+          <p>
+            Stations like CHU and WWV are part of what makes shortwave so educational: they are not just “radio stations,”
+            they are technical reference points with real history behind them.
+          </p>
+        `
+      }
+    };
+
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modalContent");
+    const closeModal = document.getElementById("closeModal");
+
+    document.querySelectorAll("[data-modal]").forEach(button => {
+      button.addEventListener("click", () => {
+        const key = button.getAttribute("data-modal");
+        const data = modalData[key];
+        modalContent.innerHTML = `
+          <h3>${data.title}</h3>
+          ${data.content}
+        `;
+        modal.classList.add("active");
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        modal.classList.remove("active");
+      }
+    });
+  </script>
+</body>
+</html>
