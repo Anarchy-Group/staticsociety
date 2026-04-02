@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Static Society - Shortwave</title>
-  <meta name="description" content="Learn about shortwave radio, how to get started, shortwave bands, famous frequencies, and the history of shortwave on Static Society." />
+  <meta name="description" content="Learn about shortwave radio, how to get started, shortwave bands, special frequencies, and the history of shortwave on Static Society." />
   <style>
     :root {
       --bg: #081018;
@@ -35,7 +35,7 @@
         radial-gradient(circle at top, rgba(134,215,255,0.08), transparent 35%),
         linear-gradient(180deg, #09111a 0%, #081018 30%, #0c1620 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     body::before {
@@ -156,16 +156,11 @@
 
     .hero-card,
     .panel,
-    .feature-card,
+    .card,
     .band-card,
-    .tip-card,
     .footer-card,
     .table-wrap,
-    .callout,
-    .history-card,
-    .start-card,
-    .freq-special-card,
-    .modal-card {
+    .callout {
       background: linear-gradient(180deg, rgba(20,34,49,0.96), rgba(16,27,39,0.96));
       border: 1px solid var(--line);
       border-radius: 22px;
@@ -179,7 +174,7 @@
     }
 
     .hero-card::after {
-      content: "SHORTWAVE • HISTORY • BANDS • STATIONS • DX";
+      content: "SHORTWAVE • DX • BANDS • HISTORY • TIMING • UTILITY";
       position: absolute;
       right: -65px;
       top: 18px;
@@ -213,7 +208,7 @@
 
     .hero p {
       color: var(--soft);
-      max-width: 880px;
+      max-width: 920px;
       font-size: 1.04rem;
     }
 
@@ -264,7 +259,7 @@
     .section-subtitle {
       margin: 0 0 22px;
       color: var(--soft);
-      max-width: 920px;
+      max-width: 980px;
     }
 
     .quick-nav {
@@ -303,48 +298,25 @@
     }
 
     .panel,
-    .feature-card,
+    .card,
     .band-card,
-    .tip-card,
-    .history-card,
-    .start-card,
-    .freq-special-card,
     .footer-card {
       padding: 24px;
     }
 
-    .feature-card h3,
+    .card h3,
     .band-card h3,
-    .tip-card h3,
-    .history-card h3,
-    .start-card h3,
-    .freq-special-card h3,
-    .footer-card h3 {
+    .footer-card h3,
+    .panel h3 {
       margin-top: 0;
       color: var(--accent);
     }
 
-    .feature-card p,
+    .card p,
     .band-card p,
-    .tip-card p,
-    .history-card p,
-    .start-card p,
-    .freq-special-card p,
     .footer-card p,
     .panel p {
       color: var(--soft);
-    }
-
-    .list,
-    .band-list {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: var(--soft);
-    }
-
-    .list li,
-    .band-list li {
-      margin-bottom: 8px;
     }
 
     .mini-tag {
@@ -356,6 +328,16 @@
       background: rgba(100,240,200,0.08);
       padding: 5px 9px;
       border-radius: 999px;
+    }
+
+    .list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--soft);
+    }
+
+    .list li {
+      margin-bottom: 8px;
     }
 
     .callout {
@@ -379,7 +361,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 900px;
+      min-width: 980px;
     }
 
     th, td {
@@ -402,6 +384,13 @@
       font-family: "Courier New", monospace;
       color: #d9f6ff;
       font-weight: bold;
+    }
+
+    .topic-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
     }
 
     .footer-grid {
@@ -431,73 +420,7 @@
       font-size: 0.92rem;
     }
 
-    .timeline {
-      display: grid;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .timeline-item {
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .timeline-item strong {
-      display: block;
-      color: var(--warning);
-      margin-bottom: 6px;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.72);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 2000;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-card {
-      width: min(760px, 100%);
-      padding: 26px;
-      position: relative;
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-
-    .modal-card h3 {
-      margin-top: 0;
-      color: var(--accent);
-      font-size: 1.8rem;
-    }
-
-    .modal-card p,
-    .modal-card li {
-      color: var(--soft);
-    }
-
-    .close-btn {
-      position: absolute;
-      right: 14px;
-      top: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    @media (max-width: 1050px) {
+    @media (max-width: 1100px) {
       .quick-nav,
       .three-col,
       .two-col,
@@ -520,16 +443,11 @@
 
       .hero-card,
       .panel,
-      .feature-card,
+      .card,
       .band-card,
-      .tip-card,
       .footer-card,
       .table-wrap,
-      .callout,
-      .history-card,
-      .start-card,
-      .freq-special-card,
-      .modal-card {
+      .callout {
         border-radius: 18px;
       }
 
@@ -555,7 +473,7 @@
 <body>
   <div class="topbar">
     <div class="container">
-      <div>📻 Static Society • Shortwave listening, bands, history, and famous frequencies</div>
+      <div>📻 Static Society • Deep shortwave listening, frequencies, DX, and history</div>
       <div>Featured page: Shortwave</div>
     </div>
   </div>
@@ -590,18 +508,23 @@
       <div class="container">
         <div class="hero-card">
           <span class="eyebrow">SHORTWAVE RADIO</span>
-          <h2>Signals from far beyond your local dial.</h2>
+          <h2>Huge distances, strange signals, and the thrill of tuning the world.</h2>
           <p>
-            Shortwave radio is one of the most fascinating parts of the radio world. Unlike local AM and FM,
-            shortwave can travel huge distances by interacting with the ionosphere, which means a listener with
-            the right setup can hear stations, time signals, utility transmissions, and unusual broadcasts from
-            far away.
+            Shortwave is one of the most exciting areas of radio because it feels alive. A band that sounds dead in
+            the afternoon can become full of distant voices and carriers after dark. A frequency that is quiet in one
+            season can suddenly wake up months later. Unlike ordinary local radio, shortwave rewards curiosity,
+            patience, and experimentation.
+          </p>
+          <p>
+            This page is built as a proper introduction and reference guide. It explains what shortwave is, why people
+            love it, how to get started, which bands to scan, which frequencies are especially famous, and why the
+            history of shortwave still matters today.
           </p>
           <div class="button-row">
-            <a href="#what-is-shortwave" class="btn primary">What Is Shortwave?</a>
+            <a href="#what-is-shortwave" class="btn primary">Start Here</a>
             <a href="#getting-started" class="btn">How to Get Into It</a>
-            <a href="#shortwave-bands" class="btn">Bands & Frequencies</a>
-            <a href="#history" class="btn ghost">History of Shortwave</a>
+            <a href="#band-guide" class="btn">Band Guide</a>
+            <a href="#history" class="btn ghost">History</a>
           </div>
         </div>
       </div>
@@ -610,13 +533,13 @@
     <section class="section">
       <div class="container">
         <h2 class="section-title">Quick navigation</h2>
-        <p class="section-subtitle">Jump straight to the part you want to explore.</p>
+        <p class="section-subtitle">Jump straight into the bit you want.</p>
         <div class="quick-nav">
-          <a href="#what-is-shortwave">Intro</a>
+          <a href="#what-is-shortwave">What Is It?</a>
           <a href="#getting-started">Getting Started</a>
-          <a href="#why-shortwave">Why It’s Cool</a>
-          <a href="#shortwave-bands">Bands</a>
-          <a href="#special-frequencies">Special Frequencies</a>
+          <a href="#why-shortwave">Why It’s Special</a>
+          <a href="#band-guide">Bands</a>
+          <a href="#special-frequencies">Famous Frequencies</a>
           <a href="#history">History</a>
         </div>
       </div>
@@ -627,31 +550,39 @@
         <div class="panel">
           <h2 class="section-title">What is shortwave?</h2>
           <p>
-            Shortwave generally refers to radio in the high-frequency range that can support long-distance reception.
-            The fun part is propagation: signals can bend or reflect via the ionosphere and reach listeners hundreds
-            or even thousands of miles away.
+            Shortwave is the part of radio listening where distance starts to feel magical. Instead of only hearing
+            nearby stations, a shortwave listener can often hear signals from far-off regions because higher-frequency
+            radio waves can interact with the ionosphere and travel beyond the horizon.
+          </p>
+          <p>
+            That means shortwave is not just “another band.” It is an entire listening culture built around long-range
+            reception, changing conditions, tuning strategy, signal strength, seasonal behaviour, and the weird joy of
+            hearing something unexpected from very far away.
           </p>
           <ul class="list">
-            <li>Good for long-distance listening</li>
-            <li>Used by broadcasters, time stations, utilities, and hobbyists</li>
-            <li>Changes a lot with time of day, season, and solar conditions</li>
-            <li>Can sound alive, unpredictable, and a little magical</li>
+            <li>It can deliver international broadcasting and distant utility signals</li>
+            <li>Reception changes with time of day and propagation conditions</li>
+            <li>It rewards experimenting instead of passive listening</li>
+            <li>It sits right in the sweet spot between science, history, and hobby</li>
           </ul>
         </div>
 
         <div class="panel" id="why-shortwave">
-          <h2 class="section-title">Why people love shortwave</h2>
+          <h2 class="section-title">Why shortwave feels different</h2>
           <p>
-            Shortwave is not just about hearing audio. It is about the experience of tuning, catching distant
-            signals, learning how propagation works, and discovering stations that feel hidden compared with
-            ordinary local radio.
+            Local FM is convenient. AM is classic. But shortwave feels like exploration. You are not simply choosing a
+            station from a menu. You are searching the spectrum, learning what the bands are doing, hearing fades and
+            interference, and slowly building the skill to recognize what kind of signal you have landed on.
           </p>
-          <ul class="list">
-            <li>International stations and cross-border listening</li>
-            <li>Famous time and frequency signals</li>
-            <li>Mystery and utility transmissions</li>
-            <li>DXing, signal hunting, and propagation geekery</li>
-          </ul>
+          <p>
+            That is why shortwave attracts a very particular kind of enthusiast. It turns listening into discovery.
+            It makes geography audible. It lets propagation itself become part of the experience.
+          </p>
+          <div class="topic-buttons">
+            <a class="btn" href="propagation.html">Propagation</a>
+            <a class="btn" href="dxing.html">DXing</a>
+            <a class="btn" href="timesignals.html">Time Signals</a>
+          </div>
         </div>
       </div>
     </section>
@@ -660,80 +591,107 @@
       <div class="container">
         <h2 class="section-title">How to get into shortwave</h2>
         <p class="section-subtitle">
-          You do not need a giant shack to start. A simple setup and curiosity go a long way.
+          The best way into shortwave is not to overcomplicate it. Start simple, listen often, and learn how the bands behave.
         </p>
 
         <div class="three-col">
-          <article class="start-card">
+          <article class="card">
             <span class="mini-tag">STEP 1</span>
-            <h3>Get a receiver</h3>
+            <h3>Choose a receiver that actually covers shortwave well</h3>
             <p>
-              Start with a radio that covers shortwave properly. A receiver with AM and, ideally, SSB
-              support is much more useful than a basic local-only radio.
+              A proper shortwave-capable radio is the first big step. If it includes AM and SSB reception, that is even better,
+              because shortwave is not only about broadcast stations. It is also about utility traffic, sideband voice, time
+              stations, and all the weird interesting stuff in between.
             </p>
+            <div class="topic-buttons">
+              <a class="btn" href="guides.html">Receiver Guides</a>
+            </div>
           </article>
 
-          <article class="start-card">
+          <article class="card">
             <span class="mini-tag">STEP 2</span>
-            <h3>Use a better antenna</h3>
+            <h3>Use the best antenna you reasonably can</h3>
             <p>
-              Even a simple wire antenna can make a huge difference. Shortwave listening often improves a lot
-              when you get away from noisy electronics and give the radio more signal to work with.
+              Even a simple wire can improve shortwave listening a lot. Shortwave reception is often less about raw transmitter
+              power and more about how well your setup is hearing the signal versus all the electrical noise around you.
             </p>
+            <p>
+              Moving away from chargers, monitors, LED lights, and other noisy devices can sometimes improve reception more than
+              buying expensive gear.
+            </p>
+            <div class="topic-buttons">
+              <a class="btn" href="guides.html">Antenna Tips</a>
+            </div>
           </article>
 
-          <article class="start-card">
+          <article class="card">
             <span class="mini-tag">STEP 3</span>
-            <h3>Learn when to listen</h3>
+            <h3>Learn the daily rhythm of the bands</h3>
             <p>
-              Lower shortwave bands often come alive more at night, while higher bands often perform better
-              during the day. The best results come from experimenting.
+              Shortwave is strongly affected by time of day. Lower bands often come alive after dark, while higher bands tend
+              to work better in daylight. Once you notice that rhythm, the whole hobby starts making more sense.
             </p>
+            <div class="topic-buttons">
+              <a class="btn" href="propagation.html">Learn Propagation</a>
+            </div>
           </article>
 
-          <article class="start-card">
+          <article class="card">
             <span class="mini-tag">STEP 4</span>
-            <h3>Scan the broadcast bands</h3>
+            <h3>Scan the broadcast bands on purpose</h3>
             <p>
-              Instead of spinning randomly, begin with the well-known shortwave broadcast bands. That gives you
-              a much better chance of hearing real activity fast.
+              Do not just spin wildly at random. Start with the classic shortwave broadcast bands and learn their character.
+              The more familiar those ranges become, the easier it gets to notice activity, recognise station types, and build
+              your own listening habits.
             </p>
+            <div class="topic-buttons">
+              <a class="btn" href="#band-guide">Band Guide</a>
+            </div>
           </article>
 
-          <article class="start-card">
+          <article class="card">
             <span class="mini-tag">STEP 5</span>
-            <h3>Keep notes</h3>
+            <h3>Keep a listening log</h3>
             <p>
-              Write down the date, time, frequency, and what you heard. This makes listening more fun and helps
-              you learn which bands work best for you.
+              Logging what you hear turns casual tuning into real progress. Write down the frequency, UTC time, signal strength,
+              mode, language, and anything distinctive. Over time you will start to see patterns.
             </p>
+            <div class="topic-buttons">
+              <a class="btn" href="dxing.html">DX Log Ideas</a>
+            </div>
           </article>
 
-          <article class="start-card">
+          <article class="card">
             <span class="mini-tag">STEP 6</span>
-            <h3>Try famous signals</h3>
+            <h3>Use famous frequencies as anchors</h3>
             <p>
-              Start with stations and frequencies that are widely known, like time signals or legendary oddities.
-              These make excellent reference points while you learn.
+              Time stations, famous mystery signals, and widely monitored frequencies are brilliant starting points.
+              They give you something concrete to hunt for, which is especially nice when you are still learning how
+              the bands work.
             </p>
+            <div class="topic-buttons">
+              <a class="btn" href="#special-frequencies">See Famous Frequencies</a>
+            </div>
           </article>
         </div>
 
         <div class="callout">
-          <h3>Beginner tip</h3>
+          <h3>Best beginner move</h3>
           <p>
-            If you are brand new, the easiest thing to do is start with the 49m, 41m, 31m, 25m, and 19m bands,
-            then check how they change between day and night.
+            Start by scanning the 49m, 41m, 31m, 25m, and 19m bands over several days. Those ranges give a really good feel
+            for how shortwave changes across time and conditions.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="shortwave-bands">
+    <section class="section" id="band-guide">
       <div class="container">
-        <h2 class="section-title">Shortwave broadcast bands</h2>
+        <h2 class="section-title">Shortwave bands and frequencies</h2>
         <p class="section-subtitle">
-          These are the classic tuning windows used for shortwave broadcasting and general listening.
+          This is the big “frequency juice” section — not just a chart, but actual explanation. These bands are where a lot of
+          classic shortwave listening happens. The ranges below are the traditional broadcast windows, and each one has its own
+          feel and listening style.
         </p>
 
         <div class="table-wrap">
@@ -742,89 +700,120 @@
               <tr>
                 <th>Band</th>
                 <th>Frequency Range</th>
-                <th>General Notes</th>
+                <th>What It’s Like</th>
+                <th>Best General Use</th>
+                <th>More</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>120m</td>
                 <td class="mono">2300–2500 kHz</td>
-                <td>Lower-frequency tropical and specialist listening area</td>
+                <td>Very low shortwave, more specialist, atmospheric, and less “casual” than the higher bands</td>
+                <td>Exploratory listening and lower-frequency interest</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>90m</td>
                 <td class="mono">3200–3400 kHz</td>
-                <td>Night listening and lower-band activity</td>
+                <td>Low-band listening with a darker, nighttime feel</td>
+                <td>Evening and night tuning</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>75m</td>
                 <td class="mono">3900–4050 kHz</td>
-                <td>Lower shortwave range, often better later in the day or at night</td>
+                <td>A lower shortwave region that can be very interesting under the right conditions</td>
+                <td>Night listening</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>60m</td>
                 <td class="mono">4700–5100 kHz</td>
-                <td>Useful lower shortwave area</td>
+                <td>Rich lower shortwave area with a lot of character</td>
+                <td>Night and late-evening listening</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>49m</td>
                 <td class="mono">5800–6300 kHz</td>
-                <td>One of the best-known shortwave broadcast ranges</td>
+                <td>One of the classic shortwave listening bands and a strong beginner favourite</td>
+                <td>General broadcast hunting</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>41m</td>
                 <td class="mono">7200–7600 kHz</td>
-                <td>Popular and often lively</td>
+                <td>Popular, often lively, and very rewarding to scan</td>
+                <td>All-round listening</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>31m</td>
                 <td class="mono">9300–9995 kHz</td>
-                <td>Classic all-round shortwave listening band</td>
+                <td>A classic all-rounder and one of the most useful places to tune</td>
+                <td>Reliable general shortwave exploration</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>25m</td>
                 <td class="mono">11500–12200 kHz</td>
-                <td>Strong daytime listening zone</td>
+                <td>Strong daytime range and a very friendly band for listeners</td>
+                <td>Daytime listening</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>22m</td>
                 <td class="mono">13500–13900 kHz</td>
-                <td>Higher daytime shortwave area</td>
+                <td>Higher shortwave where daytime openings can be fun</td>
+                <td>Good daylight monitoring</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>19m</td>
                 <td class="mono">15000–15900 kHz</td>
-                <td>Popular daytime band with wide reach</td>
+                <td>Very well-known daytime listening band with wide reach</td>
+                <td>Daytime broadcast scanning</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>16m</td>
                 <td class="mono">17400–17995 kHz</td>
-                <td>Higher-frequency daytime tuning</td>
+                <td>Higher-frequency daytime shortwave with changing behaviour</td>
+                <td>Daylight and good conditions</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>15m</td>
                 <td class="mono">18800–19100 kHz</td>
-                <td>Higher shortwave range</td>
+                <td>Upper shortwave where conditions matter a lot</td>
+                <td>Strong daytime openings</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>13m</td>
                 <td class="mono">21450–21995 kHz</td>
-                <td>Upper shortwave broadcast band</td>
+                <td>A high band that can become really interesting when propagation is strong</td>
+                <td>Upper-band experimentation</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
               <tr>
                 <td>11m</td>
                 <td class="mono">25500–26200 kHz</td>
-                <td>Highest of the traditional shortwave broadcast bands</td>
+                <td>The top edge of the classic broadcast shortwave world</td>
+                <td>High-frequency exploration</td>
+                <td><a class="btn" href="frequencies.html">Band Notes</a></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="callout">
-          <h3>Simple way to remember it</h3>
+          <h3>How to think about the bands</h3>
           <p>
-            Lower bands are often nicer at night. Higher bands often open better by day. The exact results depend
-            on propagation, location, and conditions, which is part of what makes shortwave so addictive.
+            The lower bands feel moodier, noisier, and often better at night. The middle bands are the sweet spot for a lot of
+            listeners because they offer a nice balance of activity and reliability. The higher bands can feel more “open sky” —
+            quieter sometimes, but very rewarding when propagation is in your favour.
           </p>
         </div>
       </div>
@@ -833,73 +822,166 @@
     <section class="section">
       <div class="container three-col">
         <article class="band-card">
-          <span class="mini-tag">BEST FOR NIGHT</span>
-          <h3>Lower bands</h3>
-          <ul class="band-list">
-            <li class="mono">3200–3400 kHz</li>
-            <li class="mono">3900–4050 kHz</li>
-            <li class="mono">4700–5100 kHz</li>
-            <li class="mono">5800–6300 kHz</li>
-          </ul>
+          <span class="mini-tag">LOWER SHORTWAVE</span>
+          <h3>120m, 90m, 75m, 60m</h3>
+          <p>
+            These lower bands are where shortwave starts to feel deep and atmospheric. They can be noisy, moody, and very
+            dependent on nighttime conditions, but that is also exactly why they are so appealing. They reward patient listening
+            and often feel more “mysterious” than the brighter, higher bands.
+          </p>
+          <p>
+            If you enjoy the sensation of listening into the dark and pulling signals out of fading and static, these bands are
+            full of character.
+          </p>
+          <div class="topic-buttons">
+            <a class="btn" href="propagation.html">Lower-Band Propagation</a>
+          </div>
         </article>
 
         <article class="band-card">
-          <span class="mini-tag">BEST ALL-ROUNDER</span>
-          <h3>Core listening bands</h3>
-          <ul class="band-list">
-            <li class="mono">7200–7600 kHz</li>
-            <li class="mono">9300–9995 kHz</li>
-            <li class="mono">11500–12200 kHz</li>
-          </ul>
+          <span class="mini-tag">CORE SHORTWAVE</span>
+          <h3>49m, 41m, 31m, 25m</h3>
+          <p>
+            This is the juicy centre of a lot of classic shortwave listening. These bands are fantastic for beginners because they
+            are easier to approach, often active, and closely tied to the “traditional” shortwave experience of scanning for
+            international broadcasts.
+          </p>
+          <p>
+            If someone says “go try shortwave tonight,” this is usually where they mean.
+          </p>
+          <div class="topic-buttons">
+            <a class="btn" href="dxing.html">DXing Basics</a>
+          </div>
         </article>
 
         <article class="band-card">
-          <span class="mini-tag">BEST FOR DAY</span>
-          <h3>Higher bands</h3>
-          <ul class="band-list">
-            <li class="mono">13500–13900 kHz</li>
-            <li class="mono">15000–15900 kHz</li>
-            <li class="mono">17400–17995 kHz</li>
-          </ul>
+          <span class="mini-tag">HIGHER SHORTWAVE</span>
+          <h3>22m, 19m, 16m, 15m, 13m, 11m</h3>
+          <p>
+            Higher shortwave bands feel more sensitive to daylight and propagation strength. When they open, they can be amazing.
+            When they are quiet, they can feel empty. That unpredictability makes them really fun for listeners who like checking
+            conditions and seeing what the upper part of the spectrum is doing.
+          </p>
+          <p>
+            These bands are where shortwave feels most connected to solar and atmospheric mood.
+          </p>
+          <div class="topic-buttons">
+            <a class="btn" href="propagation.html">Upper-Band Propagation</a>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="section" id="special-frequencies">
       <div class="container">
-        <h2 class="section-title">Special frequencies with stories behind them</h2>
+        <h2 class="section-title">Special frequencies with history, mystery, or character</h2>
         <p class="section-subtitle">
-          These are not just random frequencies. They are famous, historic, mysterious, or especially useful.
-          Click the buttons for more information.
+          This is where shortwave becomes extra fun. Some frequencies are important because they are useful. Some are iconic because
+          they are famous. Some are loved because they have a story attached to them.
         </p>
 
         <div class="three-col">
-          <article class="freq-special-card">
+          <article class="card">
             <span class="mini-tag">MYSTERY SIGNAL</span>
-            <h3>4625 kHz</h3>
+            <h3>4625 kHz — UVB-76 / “The Buzzer”</h3>
             <p>
-              Famous for the Russian station commonly called UVB-76 or “The Buzzer.”
+              One of the most famous monitored frequencies in the radio world. The Buzzer is known for its repeating tone and its
+              eerie reputation. It is the kind of signal that turns a casual listener into someone who starts asking questions.
             </p>
-            <button class="btn" data-modal="uvb76">More Info</button>
+            <p>
+              It is not just “a frequency.” It is almost a shortwave legend.
+            </p>
+            <div class="topic-buttons">
+              <a class="btn primary" href="uvb76.html">More About UVB-76</a>
+              <a class="btn" href="numbersstations.html">Numbers & Mystery Signals</a>
+            </div>
           </article>
 
-          <article class="freq-special-card">
-            <span class="mini-tag">TIME SIGNAL</span>
-            <h3>5000 kHz / 10000 kHz / 15000 kHz</h3>
+          <article class="card">
+            <span class="mini-tag">TIME REFERENCE</span>
+            <h3>2.5, 5, 10, 15, 20 MHz — WWV / WWVH</h3>
             <p>
-              Iconic WWV frequencies used as shortwave time and frequency references.
+              These frequencies are iconic because they are practical and historic at the same time. Time stations are brilliant
+              for beginners because they give you a stable reference and help you judge whether a band is open.
             </p>
-            <button class="btn" data-modal="wwv">More Info</button>
+            <p>
+              Hearing them can feel wonderfully technical and strangely comforting.
+            </p>
+            <div class="topic-buttons">
+              <a class="btn primary" href="timesignals.html">More About Time Signals</a>
+              <a class="btn" href="wwv.html">WWV Page</a>
+            </div>
           </article>
 
-          <article class="freq-special-card">
-            <span class="mini-tag">CANADIAN TIME STATION</span>
-            <h3>3330 kHz / 7850 kHz / 14670 kHz</h3>
+          <article class="card">
+            <span class="mini-tag">CANADIAN TIME SIGNAL</span>
+            <h3>3330, 7850, 14670 kHz — CHU</h3>
             <p>
-              CHU is a famous Canadian official time signal station.
+              CHU is another famous target because it combines technical usefulness with proper shortwave history. It is one of
+              those stations that makes the whole radio world feel connected and real.
             </p>
-            <button class="btn" data-modal="chu">More Info</button>
+            <p>
+              It is also just a very satisfying thing to catch.
+            </p>
+            <div class="topic-buttons">
+              <a class="btn primary" href="chu.html">More About CHU</a>
+              <a class="btn" href="timesignals.html">Time Signals</a>
+            </div>
           </article>
+        </div>
+
+        <div class="callout">
+          <h3>Best use of special frequencies</h3>
+          <p>
+            Think of these as anchor points. They help you build confidence, test your setup, and give your listening sessions a
+            sense of purpose. They are great “I want to hear something meaningful tonight” targets.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div class="panel">
+          <h2 class="section-title">How to actually scan a band</h2>
+          <p>
+            A lot of beginners make the same mistake: they jump around too quickly and never get a feel for the band they are in.
+            A better approach is to pick one band, move slowly, pause on carriers, and listen for a few moments before deciding
+            whether to move on.
+          </p>
+          <p>
+            Pay attention to how strong the signal is, whether it fades, whether voices are in AM or sideband, and whether the
+            band feels crowded or empty. Over time, these little impressions become real listening skill.
+          </p>
+          <p>
+            Shortwave is partly about frequencies, but it is also about rhythm and attention. The more patient you are, the more
+            the spectrum reveals.
+          </p>
+          <div class="topic-buttons">
+            <a class="btn" href="guides.html">Listening Guides</a>
+            <a class="btn" href="dxing.html">DXing Tips</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="section-title">What makes one frequency more interesting than another?</h2>
+          <p>
+            Some frequencies are interesting because they host famous stations. Some are interesting because they sit inside very
+            active bands. Some are interesting because of history. Others matter because they are useful reference points, like
+            time stations and standard-frequency broadcasts.
+          </p>
+          <p>
+            The “juicy” frequencies are often the ones that connect listening to a story. That might be a station with decades of
+            history, a technical service used around the world, or a signal wrapped in mystery and speculation.
+          </p>
+          <p>
+            When your site links those frequencies to pages about their stories, the whole website starts to feel richer and more
+            alive.
+          </p>
+          <div class="topic-buttons">
+            <a class="btn" href="links.html">External Resources</a>
+            <a class="btn" href="about.html">About the Site</a>
+          </div>
         </div>
       </div>
     </section>
@@ -908,41 +990,60 @@
       <div class="container">
         <h2 class="section-title">History of shortwave</h2>
         <p class="section-subtitle">
-          Shortwave became important when experimenters discovered that higher frequencies could be used for
-          long-distance communication by interacting with the ionosphere.
+          Shortwave became important when experimenters discovered that shorter wavelengths could support long-distance radio
+          communication through ionospheric propagation, and by the late 1930s this had grown into worldwide shortwave
+          communication and broadcasting. :contentReference[oaicite:2]{index=2}
         </p>
 
         <div class="two-col">
-          <article class="history-card">
-            <h3>How it began</h3>
-            <div class="timeline">
-              <div class="timeline-item">
-                <strong>Early 1920s</strong>
-                Experimenters began proving that shorter wavelengths could travel long distances by bouncing from
-                charged layers in the upper atmosphere.
-              </div>
-              <div class="timeline-item">
-                <strong>Late 1930s</strong>
-                These experiments helped establish worldwide shortwave communication and international broadcasting.
-              </div>
-              <div class="timeline-item">
-                <strong>Broadcast era</strong>
-                Governments, international broadcasters, and monitoring services used shortwave to reach listeners
-                far beyond national borders.
-              </div>
-            </div>
-          </article>
-
-          <article class="history-card">
-            <h3>Why it mattered</h3>
+          <article class="card">
+            <h3>Early development</h3>
             <p>
-              Shortwave was a big deal because it made global communication practical in a way that felt almost
-              unreal at the time. It could cross continents, connect remote regions, support international news,
-              and create a direct radio link between places that local broadcasting simply could not reach.
+              In the early years of radio, shorter wavelengths were not always treated as the stars of the spectrum. Over time,
+              experimenters proved that these frequencies were far more useful for long-distance links than many people first
+              assumed. That changed everything.
             </p>
             <p>
-              Even now, shortwave remains loved by hobbyists because it combines engineering, geography,
-              atmosphere, history, and pure chance in one listening experience.
+              Once the ability of shortwave to travel great distances became clear, it opened the door to international
+              broadcasting, transnational communication, and whole new kinds of monitoring and listening culture.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Why shortwave mattered globally</h3>
+            <p>
+              Shortwave mattered because it could cross borders in a way local broadcasting could not. It connected countries,
+              carried news, projected language and culture overseas, and became part of how the wider world heard itself.
+            </p>
+            <p>
+              For listeners, it also created a new thrill: the idea that with the right conditions and the right setup, a voice
+              from another part of the world might suddenly appear in your headphones.
+            </p>
+          </article>
+        </div>
+
+        <div class="three-col" style="margin-top:18px;">
+          <article class="card">
+            <span class="mini-tag">EARLY 1920s</span>
+            <h3>Discovery and experimentation</h3>
+            <p>
+              This was the era when the long-distance potential of shortwave really started to be proven in practice.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="mini-tag">LATE 1930s</span>
+            <h3>Global growth</h3>
+            <p>
+              Shortwave had become established enough to support worldwide communication and international broadcasting.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="mini-tag">MODERN HOBBY</span>
+            <h3>Listening culture continues</h3>
+            <p>
+              Even now, shortwave survives as a brilliant hobby because it combines technology, atmosphere, patience, and surprise.
             </p>
           </article>
         </div>
@@ -950,43 +1051,18 @@
     </section>
 
     <section class="section">
-      <div class="container three-col">
-        <article class="tip-card">
-          <h3>Best first target</h3>
-          <p>
-            Start with a famous time station or a busy broadcast band. That gives you something concrete to hunt
-            for instead of feeling lost.
-          </p>
-        </article>
-
-        <article class="tip-card">
-          <h3>Best habit</h3>
-          <p>
-            Log what you hear. Date, time, frequency, and signal quality notes will teach you more than random
-            tuning alone.
-          </p>
-        </article>
-
-        <article class="tip-card">
-          <h3>Best mindset</h3>
-          <p>
-            Experiment. Shortwave rewards patience. Some days a band is quiet, and another day it suddenly opens
-            and feels full of life.
-          </p>
-        </article>
-      </div>
-
       <div class="container">
         <div class="callout">
-          <h3>Shortwave page mission</h3>
+          <h3>What this page should make people feel</h3>
           <p>
-            This page should make visitors think: “I want to try this tonight.” It should feel welcoming for beginners,
-            but still rich enough that enthusiasts enjoy browsing it too.
+            Not just “oh, that’s informative,” but “I want to turn on a radio tonight and try this.” The best shortwave page does
+            more than define terms. It gives people targets, context, stories, and enough excitement to make them actually tune in.
           </p>
           <div class="button-row">
-            <a href="modes.html" class="btn">Open Modes</a>
-            <a href="guides.html" class="btn">Open Guides</a>
-            <a href="glossary.html" class="btn">Open Glossary</a>
+            <a href="modes.html" class="btn">Modes</a>
+            <a href="guides.html" class="btn">Guides</a>
+            <a href="glossary.html" class="btn">Glossary</a>
+            <a href="propagation.html" class="btn">Propagation</a>
             <a href="index.html" class="btn primary">Back to Home</a>
           </div>
         </div>
@@ -999,8 +1075,7 @@
       <div class="footer-card">
         <h3>Static Society</h3>
         <p>
-          A radio enthusiast site focused on signals, bands, propagation, listening, and the weirdly beautiful
-          world of radio.
+          A radio enthusiast site focused on signals, bands, propagation, listening, and the weirdly beautiful world of radio.
         </p>
         <a href="about.html" class="btn">About Static Society</a>
       </div>
@@ -1022,118 +1097,17 @@
         <div class="footer-links">
           <a href="guides.html">Guides</a>
           <a href="glossary.html">Glossary</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="links.html">Links</a>
+          <a href="timesignals.html">Time Signals</a>
+          <a href="dxing.html">DXing</a>
+          <a href="propagation.html">Propagation</a>
           <a href="index.html">Back to Top</a>
         </div>
       </div>
     </div>
 
     <div class="container">
-      <p class="site-note">Static Society • Shortwave listening, band hunting, and signal history 📻</p>
+      <p class="site-note">Static Society • Shortwave listening, rich band guides, and legendary frequencies 📻</p>
     </div>
   </footer>
-
-  <div class="modal" id="modal">
-    <div class="modal-card">
-      <button class="close-btn" id="closeModal">Close</button>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-
-  <script>
-    const modalData = {
-      uvb76: {
-        title: "4625 kHz — UVB-76 / “The Buzzer”",
-        content: `
-          <p>
-            4625 kHz is famous because of the Russian station commonly nicknamed <strong>UVB-76</strong>,
-            often called <strong>“The Buzzer.”</strong> It is known for a repeating buzzing sound and occasional
-            Russian voice messages.
-          </p>
-          <ul class="list">
-            <li>One of the best-known mysterious shortwave signals</li>
-            <li>Associated with military communication theories</li>
-            <li>Famous among radio listeners for its eerie continuous tone</li>
-            <li>A great example of why shortwave has such a mythic reputation</li>
-          </ul>
-          <p>
-            Even if you never decode anything, just hearing it can feel like you’ve tuned into radio folklore.
-          </p>
-        `
-      },
-      wwv: {
-        title: "WWV — Famous U.S. Time Signal Frequencies",
-        content: `
-          <p>
-            <strong>WWV</strong> is a famous U.S. shortwave time and frequency station. It is widely used as a
-            reference signal and is one of the most iconic things a shortwave listener can hear.
-          </p>
-          <ul class="list">
-            <li><span class="mono">2500 kHz</span></li>
-            <li><span class="mono">5000 kHz</span></li>
-            <li><span class="mono">10000 kHz</span></li>
-            <li><span class="mono">15000 kHz</span></li>
-            <li><span class="mono">20000 kHz</span></li>
-          </ul>
-          <p>
-            WWV is amazing for beginners because it gives you a stable target and helps you judge how well the band
-            is propagating at that moment.
-          </p>
-        `
-      },
-      chu: {
-        title: "CHU — Canadian Official Time Station",
-        content: `
-          <p>
-            <strong>CHU</strong> is Canada’s official shortwave time station and another great target for listeners.
-            It is historically interesting and also really useful as a real-world propagation check.
-          </p>
-          <ul class="list">
-            <li><span class="mono">3330 kHz</span></li>
-            <li><span class="mono">7850 kHz</span></li>
-            <li><span class="mono">14670 kHz</span></li>
-          </ul>
-          <p>
-            Stations like CHU and WWV are part of what makes shortwave so educational: they are not just “radio stations,”
-            they are technical reference points with real history behind them.
-          </p>
-        `
-      }
-    };
-
-    const modal = document.getElementById("modal");
-    const modalContent = document.getElementById("modalContent");
-    const closeModal = document.getElementById("closeModal");
-
-    document.querySelectorAll("[data-modal]").forEach(button => {
-      button.addEventListener("click", () => {
-        const key = button.getAttribute("data-modal");
-        const data = modalData[key];
-        modalContent.innerHTML = `
-          <h3>${data.title}</h3>
-          ${data.content}
-        `;
-        modal.classList.add("active");
-      });
-    });
-
-    closeModal.addEventListener("click", () => {
-      modal.classList.remove("active");
-    });
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.classList.remove("active");
-      }
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        modal.classList.remove("active");
-      }
-    });
-  </script>
 </body>
 </html>
