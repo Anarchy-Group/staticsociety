@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Static Society</title>
+  <meta name="description" content="Static Society is a radio enthusiast website covering shortwave, longwave, AM, FM, amateur radio, sideband, propagation, and guides." />
+  <style>
+    :root {
+      --bg: #081018;
+      --bg2: #0d1822;
+      --panel: #132231;
+      --panel2: #172a3d;
+      --line: #2d4b64;
+      --text: #e6f4ff;
+      --soft: #b9cfdf;
+      --accent: #86d7ff;
+      --accent2: #64f0c8;
+      --warning: #ffd27a;
+      --shadow: rgba(0,0,0,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(134,215,255,0.08), transparent 35%),
+        linear-gradient(180deg, #09111a 0%, #081018 30%, #0c1620 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+      opacity: 0.10;
+      z-index: 999;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #050b11;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+      color: var(--soft);
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(9, 17, 26, 0.88);
+      border-bottom: 1px solid rgba(134, 215, 255, 0.12);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #193248, #0f1d2a);
+      border: 1px solid var(--line);
+      font-size: 1.4rem;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      font-size: 0.96rem;
+    }
+
+    nav a:hover {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero {
+      padding: 72px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card,
+    .signal-card,
+    .panel,
+    .feature-card,
+    .glossary-card,
+    .guide-card,
+    .timeline-card,
+    .footer-card {
+      background: linear-gradient(180deg, rgba(20,34,49,0.96), rgba(16,27,39,0.96));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 50px var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "RADIO REFERENCE • LISTENING • MODES • GUIDES";
+      position: absolute;
+      right: -80px;
+      top: 22px;
+      transform: rotate(14deg);
+      font-size: 0.78rem;
+      color: rgba(230,244,255,0.22);
+      letter-spacing: 2px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 14px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(100,240,200,0.12);
+      border: 1px solid rgba(100,240,200,0.28);
+      color: #b7ffec;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      color: var(--soft);
+      font-size: 1.05rem;
+      max-width: 760px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: linear-gradient(180deg, #1a3043, #122131);
+      transition: 0.2s ease;
+      font-weight: bold;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #2c5a78, #1e4158);
+      border-color: #568db2;
+    }
+
+    .btn.ghost {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .signal-card {
+      padding: 24px;
+    }
+
+    .signal-card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .stat {
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .signal-meter {
+      margin-top: 18px;
+      background: #09131d;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      height: 16px;
+    }
+
+    .signal-fill {
+      width: 78%;
+      height: 100%;
+      background: linear-gradient(90deg, #64f0c8, #86d7ff);
+      animation: pulse 3s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { width: 78%; }
+      50% { width: 88%; }
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      margin: 0 0 22px;
+      color: var(--soft);
+      max-width: 850px;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      padding: 22px;
+      transition: 0.2s ease;
+    }
+
+    .feature-card:hover,
+    .guide-card:hover,
+    .glossary-card:hover,
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      border-color: #5f87a5;
+    }
+
+    .feature-card h3,
+    .guide-card h3,
+    .timeline-card h3,
+    .glossary-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .feature-card p,
+    .guide-card p,
+    .glossary-card p,
+    .timeline-card p {
+      color: var(--soft);
+      margin-bottom: 18px;
+    }
+
+    .mini-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      color: #bff8ea;
+      border: 1px solid rgba(100,240,200,0.2);
+      background: rgba(100,240,200,0.08);
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .band-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .band-chart {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .band-row {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .band-row strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .band-row span {
+      color: var(--soft);
+      font-size: 0.95rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      margin-top: 10px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    td {
+      color: var(--soft);
+    }
+
+    .guides-grid,
+    .glossary-grid,
+    .timeline-grid,
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .guides-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .glossary-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .timeline-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .guide-card,
+    .glossary-card,
+    .timeline-card {
+      padding: 22px;
+    }
+
+    .glossary-term {
+      color: var(--warning);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .cta {
+      padding: 30px;
+      margin-top: 10px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(100,240,200,0.08), transparent 45%),
+        linear-gradient(180deg, #162b3d, #132231);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 18px 50px var(--shadow);
+    }
+
+    .cta h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    .cta p {
+      color: var(--soft);
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    footer {
+      padding: 40px 0 50px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    }
+
+    .footer-card {
+      padding: 22px;
+    }
+
+    .footer-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--soft);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .site-note {
+      margin-top: 22px;
+      text-align: center;
+      color: #97adbe;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .band-layout,
+      .quick-links,
+      .guides-grid,
+      .glossary-grid,
+      .timeline-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero-grid,
+      .band-layout,
+      .quick-links,
+      .guides-grid,
+      .glossary-grid,
+      .timeline-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav a {
+        padding: 9px 12px;
+        font-size: 0.92rem;
+      }
+
+      .hero-card,
+      .signal-card,
+      .panel,
+      .feature-card,
+      .glossary-card,
+      .guide-card,
+      .timeline-card,
+      .footer-card,
+      .cta {
+        border-radius: 18px;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .hero-card::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>📻 Static Society • Radio knowledge, listening, and signal culture</div>
+      <div>Band focus: Shortwave • Longwave • AM • FM • Amateur • USB/LSB</div>
+    </div>
+  </div>
+
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-badge">📡</div>
+        <div class="brand-text">
+          <h1>STATIC SOCIETY</h1>
+          <p>Signals, stations, propagation, modes, and guides</p>
+        </div>
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="shortwave.html">Shortwave</a>
+        <a href="longwave.html">Longwave</a>
+        <a href="am.html">AM</a>
+        <a href="fm.html">FM</a>
+        <a href="amateur.html">Amateur</a>
+        <a href="modes.html">Modes</a>
+        <a href="guides.html">Guides</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <span class="eyebrow">WELCOME TO THE BAND</span>
+          <h2>Radio explained beautifully, clearly, and with actual depth.</h2>
+          <p>
+            Static Society is a multi-page radio website for curious beginners, dedicated listeners,
+            and full-on enthusiasts. Explore shortwave, longwave, AM, FM, amateur radio, sideband,
+            propagation, equipment, and practical listening knowledge all in one place.
+          </p>
+          <div class="button-row">
+            <a href="guides.html" class="btn primary">Start Exploring</a>
+            <a href="modes.html" class="btn">Learn Radio Modes</a>
+            <a href="shortwave.html" class="btn">Visit Shortwave</a>
+            <a href="#band-overview" class="btn ghost">See Band Overview</a>
+          </div>
+        </div>
+
+        <aside class="signal-card">
+          <h3>Signal Snapshot</h3>
+          <div class="stat">
+            <strong>Featured Topic</strong>
+            Shortwave listening and world band reception
+          </div>
+          <div class="stat">
+            <strong>Mode Spotlight</strong>
+            USB / LSB sideband communications
+          </div>
+          <div class="stat">
+            <strong>Best For</strong>
+            Learning bands, modes, propagation, and radio basics
+          </div>
+          <div class="stat">
+            <strong>Current Vibe</strong>
+            Clean retro technical archive
+          </div>
+          <div class="signal-meter">
+            <div class="signal-fill"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Explore the site</h2>
+        <p class="section-subtitle">
+          This homepage is your entry point into the full Static Society website. Each section below
+          should eventually lead to its own dedicated page with detailed explanations, examples, and guides.
+        </p>
+
+        <div class="quick-links">
+          <article class="feature-card">
+            <span class="mini-tag">WORLD BANDS</span>
+            <h3>Shortwave</h3>
+            <p>International broadcasts, HF listening, propagation, time stations, and tuning tips.</p>
+            <a class="btn" href="shortwave.html">Open Shortwave Page</a>
+          </article>
+
+          <article class="feature-card">
+            <span class="mini-tag">LOW FREQUENCY</span>
+            <h3>Longwave</h3>
+            <p>Long-distance signals, historic uses, beacons, and the lower end of the spectrum.</p>
+            <a class="btn" href="longwave.html">Open Longwave Page</a>
+          </article>
+
+          <article class="feature-card">
+            <span class="mini-tag">CLASSIC BROADCASTING</span>
+            <h3>AM & FM</h3>
+            <p>Modulation basics, reception differences, sound quality, and radio broadcasting formats.</p>
+            <a class="btn" href="am.html">Open AM Page</a>
+          </article>
+
+          <article class="feature-card">
+            <span class="mini-tag">COMMUNICATION</span>
+            <h3>Amateur Radio</h3>
+            <p>Ham radio fundamentals, bands, operations, equipment, and where to begin.</p>
+            <a class="btn" href="amateur.html">Open Amateur Page</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="band-overview">
+      <div class="container band-layout">
+        <div class="panel">
+          <h2 class="section-title">Band overview</h2>
+          <p class="section-subtitle">
+            A quick reference to major areas of radio you can expand into full pages later.
+          </p>
+
+          <div class="band-chart">
+            <div class="band-row">
+              <strong>Longwave</strong>
+              <span>Very low frequencies with long-distance ground wave behavior and specialist interest.</span>
+            </div>
+            <div class="band-row">
+              <strong>Medium Wave / AM Broadcast Band</strong>
+              <span>Traditional AM broadcasting, especially interesting for nighttime DX listening.</span>
+            </div>
+            <div class="band-row">
+              <strong>Shortwave / HF</strong>
+              <span>International broadcasting, utility stations, amateur radio, and ionospheric propagation.</span>
+            </div>
+            <div class="band-row">
+              <strong>VHF / FM Broadcast</strong>
+              <span>Local and regional reception, higher audio quality, and mostly line-of-sight coverage.</span>
+            </div>
+            <div class="band-row">
+              <strong>Amateur Bands</strong>
+              <span>Licensed radio activity across multiple frequency ranges and communication modes.</span>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <a href="guides.html" class="btn">Read Beginner Guides</a>
+            <a href="glossary.html" class="btn">Open Glossary</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="section-title">Mode comparison</h2>
+          <p class="section-subtitle">
+            A simple homepage table that gives visitors quick orientation before they jump into the full modes page.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Used For</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AM</td>
+                <td>Broadcast radio</td>
+                <td>Classic modulation, easy to receive, more affected by noise.</td>
+              </tr>
+              <tr>
+                <td>FM</td>
+                <td>Broadcast radio</td>
+                <td>Cleaner audio, better noise rejection, usually local/regional.</td>
+              </tr>
+              <tr>
+                <td>USB</td>
+                <td>HF voice comms</td>
+                <td>Upper sideband, efficient and common on many amateur frequencies.</td>
+              </tr>
+              <tr>
+                <td>LSB</td>
+                <td>HF voice comms</td>
+                <td>Lower sideband, also common in amateur use depending on band.</td>
+              </tr>
+              <tr>
+                <td>CW</td>
+                <td>Morse code</td>
+                <td>Narrow bandwidth and highly effective in weak signal conditions.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="button-row">
+            <a href="modes.html" class="btn primary">Open Full Modes Page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Featured guides</h2>
+        <p class="section-subtitle">
+          These are perfect homepage teasers for deeper articles. Each one can become its own page later.
+        </p>
+
+        <div class="guides-grid">
+          <article class="guide-card">
+            <span class="mini-tag">BEGINNER</span>
+            <h3>How Radio Frequencies Work</h3>
+            <p>Explain frequency ranges, bands, tuning, wavelength, and how radio signals are organized.</p>
+            <a class="btn" href="guides.html">Read Guide</a>
+          </article>
+
+          <article class="guide-card">
+            <span class="mini-tag">LISTENING</span>
+            <h3>How to Start Shortwave Listening</h3>
+            <p>Show beginners how to find stations, choose a receiver, and understand what they hear.</p>
+            <a class="btn" href="shortwave.html">Read Shortwave Guide</a>
+          </article>
+
+          <article class="guide-card">
+            <span class="mini-tag">TECHNICAL</span>
+            <h3>USB vs LSB Explained</h3>
+            <p>Break down sideband in a way that is clear, practical, and not full of confusing jargon.</p>
+            <a class="btn" href="modes.html">Read Sideband Guide</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container band-layout">
+        <div class="panel">
+          <h2 class="section-title">Propagation and reception</h2>
+          <p class="section-subtitle">
+            One of the coolest parts of radio is that reception is shaped by time, distance, atmosphere, and frequency.
+          </p>
+          <div class="band-chart">
+            <div class="band-row">
+              <strong>Ground Wave</strong>
+              <span>Important for lower frequencies, especially longwave and medium wave over land and sea.</span>
+            </div>
+            <div class="band-row">
+              <strong>Skywave</strong>
+              <span>Key to shortwave and HF, where signals reflect or refract via the ionosphere.</span>
+            </div>
+            <div class="band-row">
+              <strong>Line of Sight</strong>
+              <span>Common with VHF and FM, where coverage is often more local and terrain matters.</span>
+            </div>
+            <div class="band-row">
+              <strong>Interference & Noise</strong>
+              <span>Electrical noise, atmospheric noise, and nearby electronics can all affect reception.</span>
+            </div>
+          </div>
+          <div class="button-row">
+            <a href="guides.html" class="btn">Read Propagation Guides</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="section-title">Equipment topics</h2>
+          <p class="section-subtitle">
+            Later on, this can expand into a full section on radios, antennas, accessories, and listening setups.
+          </p>
+          <div class="band-chart">
+            <div class="band-row">
+              <strong>Portable Receivers</strong>
+              <span>Great entry point for casual listening and travel-friendly radio exploration.</span>
+            </div>
+            <div class="band-row">
+              <strong>Desktop Receivers</strong>
+              <span>Better controls, stronger selectivity, and often more serious hobbyist features.</span>
+            </div>
+            <div class="band-row">
+              <strong>Antennas</strong>
+              <span>One of the most important parts of improving reception and experimentation.</span>
+            </div>
+            <div class="band-row">
+              <strong>SDRs</strong>
+              <span>Software-defined radios bring visual spectrum displays and flexible digital control.</span>
+            </div>
+          </div>
+          <div class="button-row">
+            <a href="guides.html" class="btn">See Equipment Guides</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Glossary preview</h2>
+        <p class="section-subtitle">
+          A glossary page will make your site feel so much more complete. Here’s a strong preview section for the homepage.
+        </p>
+
+        <div class="glossary-grid">
+          <article class="glossary-card">
+            <span class="glossary-term">DX</span>
+            <p>Long-distance radio reception or communication, especially when receiving distant stations.</p>
+          </article>
+
+          <article class="glossary-card">
+            <span class="glossary-term">SSB</span>
+            <p>Single Sideband, a more bandwidth-efficient voice mode that includes USB and LSB.</p>
+          </article>
+
+          <article class="glossary-card">
+            <span class="glossary-term">QRM</span>
+            <p>Interference from other stations or signals that makes reception more difficult.</p>
+          </article>
+
+          <article class="glossary-card">
+            <span class="glossary-term">QSB</span>
+            <p>Signal fading over time, common in HF and shortwave propagation conditions.</p>
+          </article>
+        </div>
+
+        <div class="button-row" style="margin-top:18px;">
+          <a href="glossary.html" class="btn primary">Open Full Glossary</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Radio timeline</h2>
+        <p class="section-subtitle">
+          This makes the homepage feel richer and gives visitors another reason to stay and explore.
+        </p>
+
+        <div class="timeline-grid">
+          <article class="timeline-card">
+            <h3>Early Radio Era</h3>
+            <p>Wireless communication developed from experimental transmission into practical radio technology.</p>
+            <a class="btn" href="about.html">Learn More</a>
+          </article>
+
+          <article class="timeline-card">
+            <h3>Broadcast Expansion</h3>
+            <p>AM and later FM broadcasting transformed radio into a mass medium for news, music, and culture.</p>
+            <a class="btn" href="am.html">Explore Broadcasting</a>
+          </article>
+
+          <article class="timeline-card">
+            <h3>Modern Enthusiast Radio</h3>
+            <p>Shortwave listeners, hams, SDR users, and hobbyists continue pushing radio into new forms.</p>
+            <a class="btn" href="amateur.html">See Amateur Radio</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <h2>There is always more to tune into.</h2>
+          <p>
+            Static Society is built to be explored page by page. Whether someone wants a quick explanation
+            of AM and FM, a deep dive into shortwave propagation, or a simple guide to sideband modes,
+            this site should feel welcoming, detailed, and genuinely fun to browse.
+          </p>
+          <div class="button-row" style="justify-content:center;">
+            <a href="guides.html" class="btn primary">Open Guides</a>
+            <a href="shortwave.html" class="btn">Shortwave</a>
+            <a href="modes.html" class="btn">Modes</a>
+            <a href="glossary.html" class="btn">Glossary</a>
+            <a href="about.html" class="btn">About the Site</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-card">
+        <h3>Static Society</h3>
+        <p>
+          A radio enthusiast site focused on understanding how signals work, how bands differ,
+          and why radio is still fascinating. Built for learning, curiosity, and proper nerdy exploration.
+        </p>
+        <a href="about.html" class="btn">About Static Society</a>
+      </div>
+
+      <div class="footer-card">
+        <h3>Site Pages</h3>
+        <div class="footer-links">
+          <a href="shortwave.html">Shortwave</a>
+          <a href="longwave.html">Longwave</a>
+          <a href="am.html">AM</a>
+          <a href="fm.html">FM</a>
+          <a href="amateur.html">Amateur Radio</a>
+          <a href="modes.html">Modes</a>
+        </div>
+      </div>
+
+      <div class="footer-card">
+        <h3>More</h3>
+        <div class="footer-links">
+          <a href="guides.html">Guides</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="links.html">Links</a>
+          <a href="index.html">Back to Top</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="site-note">Static Society • Built for radio enthusiasts, listeners, and curious minds 📻</p>
+    </div>
+  </footer>
+</body>
+</html>
