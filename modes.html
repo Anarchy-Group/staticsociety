@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Static Society - Radio Modes</title>
+  <meta name="description" content="Learn about radio modes including AM, FM, USB, LSB, CW, and digital radio modes on Static Society." />
+  <style>
+    :root {
+      --bg: #081018;
+      --bg2: #0d1822;
+      --panel: #132231;
+      --panel2: #172a3d;
+      --line: #2d4b64;
+      --text: #e6f4ff;
+      --soft: #b9cfdf;
+      --accent: #86d7ff;
+      --accent2: #64f0c8;
+      --warning: #ffd27a;
+      --danger: #ff8d8d;
+      --shadow: rgba(0,0,0,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(134,215,255,0.08), transparent 35%),
+        linear-gradient(180deg, #09111a 0%, #081018 30%, #0c1620 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+      opacity: 0.10;
+      z-index: 999;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #050b11;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+      color: var(--soft);
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(9, 17, 26, 0.88);
+      border-bottom: 1px solid rgba(134, 215, 255, 0.12);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #193248, #0f1d2a);
+      border: 1px solid var(--line);
+      font-size: 1.4rem;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      font-size: 0.96rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero {
+      padding: 62px 0 30px;
+    }
+
+    .hero-card,
+    .panel,
+    .mode-card,
+    .tip-card,
+    .faq-card,
+    .footer-card,
+    .table-wrap,
+    .callout {
+      background: linear-gradient(180deg, rgba(20,34,49,0.96), rgba(16,27,39,0.96));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 50px var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "AM • FM • USB • LSB • CW • DIGITAL";
+      position: absolute;
+      right: -60px;
+      top: 18px;
+      transform: rotate(14deg);
+      font-size: 0.78rem;
+      color: rgba(230,244,255,0.22);
+      letter-spacing: 2px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 14px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(100,240,200,0.12);
+      border: 1px solid rgba(100,240,200,0.28);
+      color: #b7ffec;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+    }
+
+    .hero h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+    }
+
+    .hero p {
+      color: var(--soft);
+      max-width: 860px;
+      font-size: 1.04rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: linear-gradient(180deg, #1a3043, #122131);
+      transition: 0.2s ease;
+      font-weight: bold;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #2c5a78, #1e4158);
+      border-color: #568db2;
+    }
+
+    .btn.ghost {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      margin: 0 0 22px;
+      color: var(--soft);
+      max-width: 850px;
+    }
+
+    .quick-nav {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .quick-nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 16px 12px;
+      text-align: center;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      transition: 0.2s ease;
+      font-weight: bold;
+    }
+
+    .quick-nav a:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .mode-card {
+      padding: 24px;
+    }
+
+    .mode-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      color: #bff8ea;
+      border: 1px solid rgba(100,240,200,0.2);
+      background: rgba(100,240,200,0.08);
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .mode-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    .mode-card p {
+      color: var(--soft);
+    }
+
+    .mode-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--soft);
+    }
+
+    .mode-list li {
+      margin-bottom: 8px;
+    }
+
+    .callout {
+      padding: 22px;
+      margin-top: 18px;
+      background:
+        radial-gradient(circle at top, rgba(100,240,200,0.08), transparent 45%),
+        linear-gradient(180deg, #162b3d, #132231);
+    }
+
+    .callout h3 {
+      margin-top: 0;
+      color: var(--warning);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      padding: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    td {
+      color: var(--soft);
+    }
+
+    .tips-grid,
+    .faq-grid,
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .tips-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .faq-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    }
+
+    .tip-card,
+    .faq-card,
+    .footer-card {
+      padding: 22px;
+    }
+
+    .tip-card h3,
+    .faq-card h3,
+    .footer-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .tip-card p,
+    .faq-card p,
+    .footer-card p {
+      color: var(--soft);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--soft);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .site-note {
+      margin-top: 22px;
+      text-align: center;
+      color: #97adbe;
+      font-size: 0.92rem;
+    }
+
+    .highlight {
+      color: var(--warning);
+      font-weight: bold;
+    }
+
+    @media (max-width: 1050px) {
+      .quick-nav {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .modes-grid,
+      .two-col,
+      .tips-grid,
+      .faq-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-card,
+      .panel,
+      .mode-card,
+      .tip-card,
+      .faq-card,
+      .footer-card,
+      .table-wrap,
+      .callout {
+        border-radius: 18px;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .hero-card::after {
+        display: none;
+      }
+
+      .quick-nav {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav a {
+        padding: 9px 12px;
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>📻 Static Society • Understanding modulation, sideband, Morse, and digital modes</div>
+      <div>Featured page: Radio Modes</div>
+    </div>
+  </div>
+
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-badge">📡</div>
+        <div class="brand-text">
+          <h1>STATIC SOCIETY</h1>
+          <p>Signals, stations, propagation, modes, and guides</p>
+        </div>
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="shortwave.html">Shortwave</a>
+        <a href="longwave.html">Longwave</a>
+        <a href="am.html">AM</a>
+        <a href="fm.html">FM</a>
+        <a href="amateur.html">Amateur</a>
+        <a href="modes.html" class="active">Modes</a>
+        <a href="guides.html">Guides</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <span class="eyebrow">RADIO MODES</span>
+          <h2>AM, FM, USB, LSB, CW, and digital modes explained.</h2>
+          <p>
+            Radio modes are the different ways audio, data, or information are carried over a radio signal.
+            Some modes are mainly used for broadcasting, some are used for voice communication, and others are
+            designed for Morse code or digital data. Understanding radio modes makes it much easier to know what
+            you are hearing and why a signal sounds the way it does.
+          </p>
+          <div class="button-row">
+            <a href="#mode-comparison" class="btn primary">Compare the Modes</a>
+            <a href="#am-mode" class="btn">Jump to AM</a>
+            <a href="#usb-mode" class="btn">Jump to USB</a>
+            <a href="#digital-mode" class="btn ghost">Jump to Digital</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Quick navigation</h2>
+        <p class="section-subtitle">
+          Jump straight to the mode you want to learn about.
+        </p>
+        <div class="quick-nav">
+          <a href="#am-mode">AM</a>
+          <a href="#fm-mode">FM</a>
+          <a href="#usb-mode">USB</a>
+          <a href="#lsb-mode">LSB</a>
+          <a href="#cw-mode">CW</a>
+          <a href="#digital-mode">Digital</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mode-comparison">
+      <div class="container">
+        <h2 class="section-title">Mode comparison</h2>
+        <p class="section-subtitle">
+          This table gives a quick overview of the main radio modes and what makes each one different.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Full Name</th>
+                <th>Main Use</th>
+                <th>Strengths</th>
+                <th>Limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AM</td>
+                <td>Amplitude Modulation</td>
+                <td>Broadcasting</td>
+                <td>Simple, widely understood, easy to receive</td>
+                <td>More affected by noise and interference</td>
+              </tr>
+              <tr>
+                <td>FM</td>
+                <td>Frequency Modulation</td>
+                <td>Broadcasting and local comms</td>
+                <td>Clearer audio and better noise rejection</td>
+                <td>Usually more line-of-sight and local in range</td>
+              </tr>
+              <tr>
+                <td>USB</td>
+                <td>Upper Sideband</td>
+                <td>HF voice communication</td>
+                <td>Efficient and narrow compared with AM</td>
+                <td>Sounds strange if tuned incorrectly</td>
+              </tr>
+              <tr>
+                <td>LSB</td>
+                <td>Lower Sideband</td>
+                <td>HF voice communication</td>
+                <td>Same efficiency benefits as USB</td>
+                <td>Requires accurate tuning and receiver support</td>
+              </tr>
+              <tr>
+                <td>CW</td>
+                <td>Continuous Wave</td>
+                <td>Morse code</td>
+                <td>Very narrow bandwidth, excellent for weak signals</td>
+                <td>Requires learning Morse code to fully use</td>
+              </tr>
+              <tr>
+                <td>Digital</td>
+                <td>Various digital modes</td>
+                <td>Text, data, weak-signal work</td>
+                <td>Can work very well under difficult conditions</td>
+                <td>Often needs software and decoding tools</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <h3>Good rule of thumb</h3>
+          <p>
+            <span class="highlight">AM and FM</span> are the most familiar broadcast modes,
+            <span class="highlight">USB and LSB</span> are common for voice communication on HF,
+            <span class="highlight">CW</span> is Morse code, and
+            <span class="highlight">digital modes</span> are used for machine-readable communication like text and data.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container modes-grid">
+        <article class="mode-card" id="am-mode">
+          <span class="mode-tag">BROADCAST MODE</span>
+          <h3>AM</h3>
+          <p>
+            AM stands for <strong>Amplitude Modulation</strong>. In AM, the strength of the carrier signal changes
+            to carry audio information. This is one of the oldest and most familiar radio modes and is strongly
+            associated with medium wave broadcasting.
+          </p>
+          <ul class="mode-list">
+            <li>Commonly used for medium wave broadcasting</li>
+            <li>Easy to receive with simple radio equipment</li>
+            <li>Can travel long distances, especially at night</li>
+            <li>More vulnerable to static and electrical noise</li>
+          </ul>
+        </article>
+
+        <article class="mode-card" id="fm-mode">
+          <span class="mode-tag">BROADCAST MODE</span>
+          <h3>FM</h3>
+          <p>
+            FM stands for <strong>Frequency Modulation</strong>. Instead of changing signal strength, FM changes
+            the frequency slightly to carry audio. This gives FM better sound quality and makes it less sensitive
+            to noise than AM.
+          </p>
+          <ul class="mode-list">
+            <li>Commonly used for VHF broadcast radio</li>
+            <li>Usually clearer sounding than AM</li>
+            <li>Good resistance to static and electrical noise</li>
+            <li>Often more local or regional because of line-of-sight behavior</li>
+          </ul>
+        </article>
+
+        <article class="mode-card" id="usb-mode">
+          <span class="mode-tag">VOICE COMMUNICATION</span>
+          <h3>USB</h3>
+          <p>
+            USB means <strong>Upper Sideband</strong>. It is one form of single sideband, where only one sideband
+            of the signal is transmitted rather than both sidebands and a full carrier like AM. This makes it more
+            efficient in both bandwidth and power.
+          </p>
+          <ul class="mode-list">
+            <li>Common on many HF amateur and utility frequencies</li>
+            <li>More efficient than full AM transmission</li>
+            <li>Often used for long-distance voice communication</li>
+            <li>Needs accurate tuning or voices will sound wrong</li>
+          </ul>
+        </article>
+
+        <article class="mode-card" id="lsb-mode">
+          <span class="mode-tag">VOICE COMMUNICATION</span>
+          <h3>LSB</h3>
+          <p>
+            LSB means <strong>Lower Sideband</strong>. Like USB, it is a single sideband mode. The difference is
+            that the lower sideband is transmitted instead of the upper one. In practice, USB and LSB are extremely
+            similar except for tuning and band convention.
+          </p>
+          <ul class="mode-list">
+            <li>Also common on HF amateur radio bands</li>
+            <li>Often chosen based on operating convention</li>
+            <li>Efficient for voice communication</li>
+            <li>Needs a receiver capable of SSB reception</li>
+          </ul>
+        </article>
+
+        <article class="mode-card" id="cw-mode">
+          <span class="mode-tag">MORSE CODE</span>
+          <h3>CW</h3>
+          <p>
+            CW stands for <strong>Continuous Wave</strong>. In radio hobby use this usually means Morse code.
+            CW is extremely narrow in bandwidth and can be effective even when signals are weak, which is one reason
+            it remains respected in amateur radio.
+          </p>
+          <ul class="mode-list">
+            <li>Used for Morse code communication</li>
+            <li>Excellent under weak signal conditions</li>
+            <li>Uses much less bandwidth than voice modes</li>
+            <li>Requires practice and decoding skill</li>
+          </ul>
+        </article>
+
+        <article class="mode-card" id="digital-mode">
+          <span class="mode-tag">DATA & TEXT</span>
+          <h3>Digital Modes</h3>
+          <p>
+            Digital radio modes cover many systems used for text, data, images, telemetry, and weak-signal work.
+            These include modes that rely on software to encode and decode information, often with much better
+            performance in poor conditions than normal voice communication.
+          </p>
+          <ul class="mode-list">
+            <li>Can be used for text, data, telemetry, and weak-signal work</li>
+            <li>Often decoded with computer software</li>
+            <li>Very useful for experimentation and technical radio work</li>
+            <li>Includes many different formats with different purposes</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div class="panel">
+          <h2 class="section-title">USB vs LSB</h2>
+          <p class="section-subtitle">
+            Sideband can confuse beginners, so here is the simple version.
+          </p>
+          <p>
+            Both USB and LSB are forms of <strong>single sideband</strong>, often shortened to <strong>SSB</strong>.
+            They work by removing part of the signal that would normally be sent in standard AM, which saves bandwidth
+            and power. The main difference is which sideband is being transmitted.
+          </p>
+          <p>
+            In practice, many operators choose USB or LSB based on <strong>band convention</strong>. A listener does
+            not usually think of one as “better” than the other in general. What matters is tuning the receiver
+            correctly and using the same sideband as the transmitting station.
+          </p>
+          <div class="button-row">
+            <a href="glossary.html" class="btn">SSB in Glossary</a>
+            <a href="guides.html" class="btn">Read More Guides</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="section-title">Broadcast modes vs communication modes</h2>
+          <p class="section-subtitle">
+            Not every mode is used for the same purpose.
+          </p>
+          <ul class="mode-list">
+            <li><strong>AM</strong> and <strong>FM</strong> are closely associated with broadcasting</li>
+            <li><strong>USB</strong> and <strong>LSB</strong> are more associated with two-way communication</li>
+            <li><strong>CW</strong> is commonly used for Morse code</li>
+            <li><strong>Digital modes</strong> are often used for text, data, or highly efficient communication</li>
+          </ul>
+          <p>
+            That is why identifying a mode helps explain what kind of station you may be hearing: a broadcaster,
+            a ham operator, a utility station, or a machine-readable signal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Listening tips</h2>
+        <p class="section-subtitle">
+          These are simple things that make a big difference when trying to identify radio modes.
+        </p>
+
+        <div class="tips-grid">
+          <article class="tip-card">
+            <h3>Listen to how it sounds</h3>
+            <p>
+              AM usually sounds familiar but noisier, FM sounds cleaner, and badly tuned sideband often sounds
+              unnatural or “Donald Duck-like” until tuned correctly.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <h3>Check the band</h3>
+            <p>
+              The frequency range gives useful clues. Broadcast FM is usually in VHF, medium wave usually means AM,
+              and HF voice activity may often be USB or LSB.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <h3>Use the right receiver mode</h3>
+            <p>
+              Some radios let you switch between AM, FM, USB, LSB, and CW. Choosing the right one is essential for
+              hearing the signal properly.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="section-subtitle">
+          A nice little FAQ section makes the page feel more complete and useful.
+        </p>
+
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>Why does sideband sound weird?</h3>
+            <p>
+              Sideband depends on correct tuning. If your radio is slightly off frequency, voices can sound too high,
+              too low, or just very strange.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Is FM always better than AM?</h3>
+            <p>
+              FM usually sounds cleaner for local listening, but AM can travel farther in some situations, especially
+              on lower frequencies and at night.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Do I need a special radio for USB and LSB?</h3>
+            <p>
+              Yes, your receiver needs to support single sideband reception. Basic broadcast radios often do not.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>What mode should a beginner learn first?</h3>
+            <p>
+              AM and FM are the easiest starting point. After that, USB and LSB are a great next step if you want to
+              explore amateur radio or HF communications.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="callout">
+          <h3>Modes page mission</h3>
+          <p>
+            This page should help visitors answer one simple question: <strong>what am I hearing?</strong>
+            The more clearly your site explains the difference between AM, FM, USB, LSB, CW, and digital modes,
+            the more useful Static Society becomes for beginners and enthusiasts alike.
+          </p>
+          <div class="button-row">
+            <a href="index.html" class="btn primary">Back to Home</a>
+            <a href="guides.html" class="btn">Open Guides</a>
+            <a href="glossary.html" class="btn">Open Glossary</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-card">
+        <h3>Static Society</h3>
+        <p>
+          A radio enthusiast site focused on understanding signals, bands, propagation, and how different radio
+          modes are used in the real world.
+        </p>
+        <a href="about.html" class="btn">About Static Society</a>
+      </div>
+
+      <div class="footer-card">
+        <h3>Site Pages</h3>
+        <div class="footer-links">
+          <a href="shortwave.html">Shortwave</a>
+          <a href="longwave.html">Longwave</a>
+          <a href="am.html">AM</a>
+          <a href="fm.html">FM</a>
+          <a href="amateur.html">Amateur Radio</a>
+          <a href="modes.html">Modes</a>
+        </div>
+      </div>
+
+      <div class="footer-card">
+        <h3>More</h3>
+        <div class="footer-links">
+          <a href="guides.html">Guides</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="links.html">Links</a>
+          <a href="index.html">Back to Top</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="site-note">Static Society • Radio modes explained clearly 📻</p>
+    </div>
+  </footer>
+</body>
+</html>
